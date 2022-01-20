@@ -82,10 +82,10 @@ module.exports = function (app) {
      if (Object.keys(inputs).length == 1) {
       return res.send({ error: 'no update field(s) sent', _id: id});
       };
-    if(!inputs.open)inputs.open=true;//если уже был закрыт, но в этот же ид вносим новое - open должно с false снова стать true
+    if(!inputs.open)inputs.open=true;
 
     const updated= await myDb.collection(project).findOneAndUpdate({_id: new fieldId (id)},
-    {$set:inputs//обновляет значения тех свойств найденного документа, которые есть в обьекте inputs  
+    {$set:inputs
         },{returnNewDocument:true});
       
     if(updated.value== null) return res.send({  error:'could not update', '_id': id });
